@@ -1,0 +1,11 @@
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\bin\Debug\net7.0\Chess.deps.json
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\bin\Debug\net7.0\Chess.dll
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\bin\Debug\net7.0\Chess.pdb
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\Chess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\Chess.AssemblyInfoInputs.cache
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\Chess.AssemblyInfo.cs
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\Chess.csproj.CoreCompileInputs.cache
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\Chess.dll
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\refint\Chess.dll
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\Chess.pdb
+C:\Users\Hall\Desktop\code-dir-2\ChessProject\Chess\obj\Debug\net7.0\ref\Chess.dll
