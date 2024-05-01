@@ -13,7 +13,7 @@ public class Board {
 
     public string Player = "Red";
 
-    public Piece?[,] readFile(string path = "../Chess.Tests/BoardCases/King.txt") {
+    public Piece?[,] readFile(string path = "../Chess.Tests/BoardCases/Board.txt") {
         Piece?[,] board = new Piece?[8,8];
 
         string[] file = File.ReadAllLines(path);
@@ -72,7 +72,7 @@ public class Board {
     
     public void Display(int? x = null, int? y = null) {
         Console.Clear();
-        Console.WriteLine(" 01234567");
+        Console.WriteLine(" ABCDEFGH");
 
         int i = 0;
         foreach (ConsoleColor color in Grid()) {
@@ -120,30 +120,41 @@ public class Board {
     }
 
     public void SelectPiece() {
+
+        List<string> letters = new List<string> {"a", "b", "c", "d", "e", "f", "g", "h"};
+
         while (0 == 0) {
             Console.WriteLine($"{Player} turn");
             Console.WriteLine("Which piece do you want to move?");
 
-            string? response = Console.ReadLine();
-                    
-            if (!int.TryParse(response, out _)) {
-                Console.WriteLine("Invalid Response");
-            } else {
-                int responseX = Convert.ToInt32(Convert.ToString(response[0]));
-                int responseY = Convert.ToInt32(Convert.ToString(response[1]));
+            string? response = Console.ReadLine()!.ToLower();
 
-                Console.WriteLine($"{responseX} {responseY}");
+            int responseY = 10;
+            int responseX = 10;
 
-                if (boardArea?[responseX, responseY] == null) {
-                    Console.WriteLine("You have you select a piece");
-                }
+            if (response?.Length == 2) {
+                if (char.IsNumber(response[0])) {
+                    responseY = Convert.ToInt32(Convert.ToString(response[0]));
 
-                else if (boardArea?[responseX, responseY]!.Color != Player) {
-                    Console.WriteLine("You can only move your own piece");
+                    responseX = letters.FindIndex(a => a.Contains(response[1]));
+                } else {
+                    responseY = Convert.ToInt32(Convert.ToString(response[1]));
+
+                    responseX = letters.FindIndex(a => a.Contains(response[0]));
                 }
-                else if (MakeMove(responseX, responseY)) {
-                    return;
-                }
+            }
+
+            Console.WriteLine($"{responseX} {responseY}");
+
+            if (boardArea?[responseX, responseY] == null) {
+                Console.WriteLine("You have you select a piece");
+            }
+
+            else if (boardArea?[responseX, responseY]!.Color != Player) {
+                Console.WriteLine("You can only move your own piece");
+            }
+            else if (MakeMove(responseX, responseY)) {
+                return;
             }
 
             Console.WriteLine("Press Enter to Continue");
@@ -154,19 +165,29 @@ public class Board {
         }
     }
     public bool MakeMove(int x, int y) {
+        List<string> letters = new List<string> {"a", "b", "c", "d", "e", "f", "g", "h"};
+
         Display(x, y);
 
         Console.WriteLine();
         Console.WriteLine("Where do you want to move?");
 
-        string? response = Console.ReadLine();
-        
-        if (!int.TryParse(response, out _)) {
-            Console.WriteLine("Invalid Response");
-            return false;
+        string? response = Console.ReadLine()!.ToLower();
+
+        int responseY = 10;
+        int responseX = 10;
+
+        if (response?.Length == 2) {
+            if (char.IsNumber(response[0])) {
+                responseY = Convert.ToInt32(Convert.ToString(response[0]));
+
+                responseX = letters.FindIndex(a => a.Contains(response[1]));
+            } else {
+                responseY = Convert.ToInt32(Convert.ToString(response[1]));
+
+                responseX = letters.FindIndex(a => a.Contains(response[0]));
+            }
         }
-        int responseX = Convert.ToInt32(Convert.ToString(response[0]));
-        int responseY = Convert.ToInt32(Convert.ToString(response[1]));
 
         if (boardArea[x, y]!.canMove(responseX, responseY)) {
             boardArea[responseX, responseY] = boardArea[x, y];
